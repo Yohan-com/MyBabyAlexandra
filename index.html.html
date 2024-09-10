@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Love You Letter</title>
+    <style>
+        body {
+            background-color:pink;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        h1 {
+            color: #e91e63;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 0, 0, 0.8);
+            opacity: 0;
+            animation: confetti 6s infinite;
+        }
+        @keyframes confetti {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>I Love You</h1>
+        <p>Dear [Alexandra],</p>
+        <p>I wanted to take a moment to tell you just how much you mean to me. Every day with you is a gift, and I cherish every moment we spend together. Your love, kindness, and support make my life complete. I am so grateful for you and all that you do.</p>
+        <p>Surprise! Here's a little something to show how much I care. I hope this adds a touch of joy to your day.</p>
+        <p>With all my love,</p>
+        <p>[Vaughn]</p>
+    </div>
+    <div class="confetti" id="confetti"></div>
+    <script>
+        function createConfetti() {
+            const colors = ['#FFC107', '#8BC34A', '#03A9F4', '#FF5722', '#9C27B0'];
+            const confettiContainer = document.getElementById('confetti');
+
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                const size = Math.random() * 10 + 5;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const duration = Math.random() * 5 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                confetti.style.backgroundColor = color;
+                confetti.style.left = `${left}%`;
+                confetti.style.top = `${top}%`;
+                confetti.style.opacity = Math.random();
+                confetti.style.animationDuration = `${duration}s`;
+
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        window.onload = function() {
+            createConfetti();
+        };
+    </script>
+</body>
+</html>
